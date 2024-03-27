@@ -9,27 +9,27 @@ public class AnalyticsManager : MonoBehaviour
     public static AnalyticsManager Instance { get; private set; } // Singleton instance
 
     // Google Form URL and field names
-    private const string formURL = "https://docs.google.com/forms/u/0/d/e/1FAIpQLScFhWT_BFBHzBmJufmesR7FrUbq2D7bttCGJB0hdYKIOZXr9A/formResponse";
-    // private const string formURL = "https://docs.google.com/forms/u/0/d/e/1FAIpQLScIHVahCdPvuCaiNaUCMBBZ3irn0guQQZe4J-hhxoVl-xyGCQ/formResponse";
-    private const string sessionIDFieldName = "entry.1425437715";
-    private const string sessionStartFieldName = "entry.1537180872";
-    private const string diamondOneCollectedFieldName = "entry.1666743395";
-    private const string diamondTwoCollectedFieldName = "entry.1627429180";
-    private const string gameLostFieldName = "entry.654633359";
-    private const string gameWonFieldName = "entry.1719582203";
-    private const string usedGhostModeFIeldName = "entry.1781204333";
-    // private const string sessionIDFieldName = "entry.1528187168";
-    // private const string sessionStartFieldName = "entry.1624323975";
-    // private const string diamondOneCollectedFieldName = "entry.466139527";
-    // private const string diamondTwoCollectedFieldName = "entry.2035539655";
-    // private const string gameLostFieldName = "entry.880444437";
-    // private const string gameWonFieldName = "entry.114316415";
-    // private const string usedGhostModeFIeldName = "entry.2012665187";
+    // private const string formURL = "https://docs.google.com/forms/u/0/d/e/1FAIpQLScFhWT_BFBHzBmJufmesR7FrUbq2D7bttCGJB0hdYKIOZXr9A/formResponse";
+    private const string formURL = "https://docs.google.com/forms/u/0/d/e/1FAIpQLScIHVahCdPvuCaiNaUCMBBZ3irn0guQQZe4J-hhxoVl-xyGCQ/formResponse";
+    // private const string sessionIDFieldName = "entry.1425437715";
+    // private const string sessionStartFieldName = "entry.1537180872";
+    // private const string diamondOneCollectedFieldName = "entry.1666743395";
+    // private const string diamondTwoCollectedFieldName = "entry.1627429180";
+    // private const string gameLostFieldName = "entry.654633359";
+    // private const string gameWonFieldName = "entry.1719582203";
+    // private const string usedGhostModeFIeldName = "entry.1781204333";
+    private const string sessionIDFieldName = "entry.1528187168";
+    private const string sessionStartFieldName = "entry.1624323975";
+    private const string diamondOneCollectedFieldName = "entry.466139527";
+    private const string diamondTwoCollectedFieldName = "entry.2035539655";
+    private const string gameLostFieldName = "entry.880444437";
+    private const string gameWonFieldName = "entry.114316415";
+    private const string usedGhostModeFIeldName = "entry.2012665187";
 
-    // private const string timeToWinFieldName = "entry.1915734830";
-    // private const string timeToCollectFirstDiamondFieldName = "entry.632710935";
-    // private const string timeToCollectSecondDiamondFieldName = "entry.662346092";
-    // private const string timeBetweenDiamondsFieldName = "entry.24591028";
+    private const string timeToWinFieldName = "entry.1915734830";
+    private const string timeToCollectFirstDiamondFieldName = "entry.632710935";
+    private const string timeToCollectSecondDiamondFieldName = "entry.662346092";
+    private const string timeBetweenDiamondsFieldName = "entry.24591028";
 
     private string sessionID;
     private bool diamondOneCollected = false;
@@ -152,10 +152,10 @@ public class AnalyticsManager : MonoBehaviour
         form.AddField(usedGhostModeFIeldName, usedGhostMode ? "1" : "0");
 
         // Add time measurements
-        // form.AddField(timeToWinFieldName, (int)timeToWin.TotalSeconds);
-        // form.AddField(timeToCollectFirstDiamondFieldName, (int)timeToCollectFirstDiamond.TotalSeconds);
-        // form.AddField(timeToCollectSecondDiamondFieldName, (int)timeToCollectSecondDiamond.TotalSeconds);
-        // form.AddField(timeBetweenDiamondsFieldName, (int)timeBetweenDiamonds.TotalSeconds);
+        form.AddField(timeToWinFieldName, (int)timeToWin.TotalSeconds);
+        form.AddField(timeToCollectFirstDiamondFieldName, (int)timeToCollectFirstDiamond.TotalSeconds);
+        form.AddField(timeToCollectSecondDiamondFieldName, (int)timeToCollectSecondDiamond.TotalSeconds);
+        form.AddField(timeBetweenDiamondsFieldName, (int)timeBetweenDiamonds.TotalSeconds);
 
 
         using (UnityWebRequest www = UnityWebRequest.Post(formURL, form))
